@@ -1,11 +1,4 @@
-# Change Log
+# Changelog
 
-### *Unreleased*
-- Added something
-- Changed something else
-- Fixed this bug
-- Removed my pants
-- Removed wanted to see if you were reading this
-
-### 0.0.1 - 2001-12-31
-- Added initial version of this plugin.
+### 0.1.0 ~ 2016-05-12
+- Created initial version of this plugin.

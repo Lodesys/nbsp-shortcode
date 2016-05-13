@@ -1,34 +1,40 @@
 <?php
 /**
-Plugin Name: _TEMPLATE_TEXT_NAME_HERE_
-Plugin URI: https://www.lodesys.com/_URL_HERE_
-Description: _A_DESCRIPTION_OF_THE_PLUGIN_
-Version: 0.0.1
+Plugin Name: NBSP Shotcode
 Author: Chris Daley
 Author URI: https://www.lodesys.com
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Domain Path: /languages
-Text Domain: _TEMPLATE_FOLDER_NAME_HERE_
-GitHub Plugin URI: https://github.com/Lodesys/_TEMPLATE_FOLDER_NAME_HERE_
-GitHub Branch:     master
+Plugin URI: https://www.lodesys.com/plugin/nbsp-shortcode/
 Requires WP:       3.8
+Version: 0.1.0
 Requires PHP:      5.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+GitHub Plugin URI: https://github.com/Lodesys/nbsp-shortcode.git
+GitHub Branch:     master
+Description: Replaces the `[nbsp]` shortcode with the `&nbsp ;` character entity string.
  */
 
 // security measure
 defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 
-// activate the plugin
-function _TEMPLATE_FOLDER_NAME_activate() {
-	if ( version_compare( get_bloginfo( 'version' ), '3.8', '<' ) ) {
-		wp_die( "You must update WordPress to use this plugin!" );
+// define the class containing the plugin scripts
+class nbsp_shortcode {
+
+	// activate the plugin
+	static function activate() {
+		if ( version_compare( get_bloginfo( 'version' ), '3.8', '<' ) ) {
+			wp_die( "You must update WordPress to use this plugin!" );
+		}
 	}
+
+	// replace the shortcode
+	static function insert_nbsp() {
+		return '&nbsp;';
+	}
+
 }
-register_activation_hook( __FILE__, '_TEMPLATE_FOLDER_NAME_activate' );
 
-// include or require any files
+// add the plugin hooks
+register_activation_hook( __FILE__, array( 'nbsp_shortcode', 'activate' ) );
+add_shortcode( 'nbsp', array( 'nbsp_shortcode', 'insert_nbsp' ) );
 
-// insert the action &/or filter hooks
-
-// simple functions here
